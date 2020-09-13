@@ -1,0 +1,16 @@
+import cv2
+import numpy as np
+
+img = cv2.imread('lena.jpg')
+layer = img.copy()
+gp = [layer] #Gaussian Pyramid
+
+for i in range(6):
+    layer = cv2.pyrDown(layer)#Decreases Resolution by 1/4
+    gp.append(layer)
+    cv2.imshow(str(i), layer)
+
+
+cv2.imshow("original image", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
